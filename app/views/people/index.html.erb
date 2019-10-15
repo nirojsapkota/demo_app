@@ -2,28 +2,25 @@
 
 <h1>People</h1>
 <%= render 'shared/search' %>
-<table>
-  <thead>
-    <tr>
-      <th>Full name</th>
-      <th>Action</th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @people.each do |person| %>
-      <tr>
-        <td><%= person.full_name %></td>
-        <td><%= link_to 'Show', person %></td>
-      </tr>
-    <% end %>
-  </tbody>
-  <tfoot>
-    <tr>
-      <td><%= will_paginate @people, :style => 'color:blue' %></td>
-    </tr>
-  </tfoot>
-</table>
-
-<br>
-
+<%= table_for @people, :sortable => true do |table| %>
+  <% table.column :full_name, :header => "Full Name", :order => "first_name" do |p| %>
+    <%= p.full_name %>
+  <% end %>
+  <% table.column :gender %>
+  <% table.column :species %>
+  <% table.column :weapon %>
+  <% table.column :affiliations, :sortable => false, :order => "name" do |p| %>
+  <%= p.affiliations.map(&:name).join(", ") %>
+  <% end %>
+  <% table.column :locations, :sortable => false, :order => "name" do |p| %>
+  <%= p.locations.map(&:name).join(", ") %>
+  <% end %>
+  <% table.column :data => 'Show', :link_url => lambda{ |p| person_path(p) } %>
+  
+  <% table.footer do %>
+    <div class="pull-right">
+      <%= will_paginate @people %>
+    </div>
+  <% end %>
+<% end %>

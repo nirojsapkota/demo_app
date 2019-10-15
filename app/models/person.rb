@@ -19,6 +19,10 @@ class Person < ApplicationRecord
       [self.first_name, self.last_name].join(" ")
     end
 
+    def get_gender
+      gender
+    end
+
     scope :query, -> (query) {
       where('first_name = ? or last_name = ?', query, query)
     }
