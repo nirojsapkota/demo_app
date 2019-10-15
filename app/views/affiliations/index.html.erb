@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Affiliations</h1>
+<%= render 'shared/search' %>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Person</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @affiliations.each do |affiliation| %>
+      <tr>
+        <td><%= affiliation.name %></td>
+        <td><%= affiliation.person.full_name %></td>
+        <td><%= link_to 'Show', affiliation %></td>
+        <td><%= link_to 'Edit', edit_affiliation_path(affiliation) %></td>
+        <td><%= link_to 'Destroy', affiliation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td><%= will_paginate @people, :style => 'color:blue' %></td>
+    </tr>
+  </tfoot>
+</table>
+
+<br>
+
+<%= link_to 'New Affiliation', new_affiliation_path %>

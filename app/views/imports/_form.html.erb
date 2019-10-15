@@ -1,0 +1,9 @@
+<%= form_tag({action: :create}, :multipart => true) do %>
+  <div>
+    <%= file_field_tag 'import_csv' %>
+  </div>
+
+  <div class="actions">
+    <%= submit_tag "Import" %>
+  </div>
+<% end %>

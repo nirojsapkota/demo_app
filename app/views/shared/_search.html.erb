@@ -1,0 +1,5 @@
+<%= form_tag({controller: controller_name, action: "index"}, method: "get") do %>
+  <%= label_tag(:query, "Search") %>
+  <%= text_field_tag(:query, params[:query]) %>
+  <%= submit_tag("Search") %>
+<% end %>

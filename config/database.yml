@@ -1,0 +1,32 @@
+development:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: sentia_development
+  username: root
+  password: root
+  host: localhost
+  port: 3306
+  pool: 20
+
+test:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: sentia_test
+  host: localhost
+  username: root
+  password: root
+  port: 3306
+  pool: 20
+
+production:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: sentia_development
+  username: root
+  password: root
+  host: localhost
+  port: 3306
+  pool: 20

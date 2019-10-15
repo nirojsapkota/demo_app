@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>People</h1>
+<%= render 'shared/search' %>
+<table>
+  <thead>
+    <tr>
+      <th>Full name</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @people.each do |person| %>
+      <tr>
+        <td><%= person.full_name %></td>
+        <td><%= link_to 'Show', person %></td>
+      </tr>
+    <% end %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td><%= will_paginate @people, :style => 'color:blue' %></td>
+    </tr>
+  </tfoot>
+</table>
+
+<br>
+
